@@ -1,0 +1,18 @@
+<div class="todo">
+  <div *ngIf="!editMode" class="todoInput">
+    <input type="text" placeholder="Add a new task" [(ngModel)]="newTask" />
+    <button class="button" (click)="addTask()">Add</button>
+  </div>
+  <div *ngIf="editMode" class="todoInput">
+    <input type="text" placeholder="Update Task" [(ngModel)]="editedTask" />
+    <button class="button" (click)="updatedTask()">Update</button>
+  </div>
+  <div *ngFor="let task of tasks; let index = index" class="listTask">
+    <input *ngIf="!editMode" type="checkbox" (change)="completedBtn()" />
+    <span *ngIf="!editMode">{{ task.description }}</span>
+    <div *ngIf="!editMode" class="taskBtn">
+      <button class="button" (click)="deleteTask(task)">Delete</button>
+      <button class="button" (click)="editRaskBtn(index)">Edit</button>
+    </div>
+  </div>
+</div>
